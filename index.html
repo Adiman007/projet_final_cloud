@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Click Speed Test</title>
+</head>
+<body>
+	<h1>Click Speed Test</h1>
+	<p>Click the button as fast as you can:</p>
+	<form method="post">
+		<button type="submit">Click me!</button>
+	</form>
+	<p>Counter: {{ counter }}</p>
+	{% if elapsed_time > 0 %}
+		<p>Time limit: 10 seconds</p>
+		<p>Time elapsed: {{ elapsed_time }} seconds</p>
+	{% endif %}
+</body>
+</html>
+
