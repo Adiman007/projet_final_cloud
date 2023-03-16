@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Click Speed Test</title>
+</head>
+<body>
+
+	<div class="center_page">
+		<h1>Click Speed Test</h1>
+		<p>Click the button as fast as you can:</p>
+
+		<br>
+		<br>
+
+		<form method="post">
+			<button type="submit" {% if elapsed_time >= 10 %}disabled{% endif %}>Click me!</button>
+		</form>
+
+		<br>
+		<br>
+
+		{% if elapsed_time >= 10 %}
+			<p>Time limit: 10 seconds</p>
+			<p>Counter: {{ session.get('final_counter', 0)}}</p>
+			<form method="get">
+				<button type="submit">Try again</button>
+			</form>
+		{% else %}
+			<p>Counter: {{ counter }}</p>
+			<div id="time-bar" style="width: {{(elapsed_time / 10) * 100}}%;"></div>
+		{% endif %}
+
+		<br>
+		<br>
+
+		<form action="{{ url_for('leaderboard') }}" method="get">
+			<button type="submit">Leaderboard</button>
+		</form>
+		
+
+	</div>
+
+	
+
+	
+	
+</body>
+
+<style>
+		#time-bar {
+			height: 20px;
+			background-color: #ccc;
+			transition: width 1s linear;
+		}
+
+		.center_page {
+			margin: auto;
+			width: 50%;
+			border: 3px solid rgb(120, 176, 166);
+			background-color:#718aad;
+			padding: 10px;
+			text-align: center;
+		}
+
+		body{
+			background-color:#324b6e;
+		}
+
+		button{
+			background-color: #2bd3d6;
+		}
+
+</style>
+
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leaderborad</title>
+</head>
+<body>
+	<div class="center_page">
+		<h1>Are you a champion?</h1>
+	
+		<table class="middle">
+			{% if all_score==NULL %}
+				<h1>NO DATA TO DISPLAY</h1>
+			{% else %}
+			
+			<tr>
+				<th>NAME</th>
+				<th>SCORE</th>
+			</tr>
+				{% for score in all_score %}
+					<div class="score">
+						<tr>
+							<td>{{score.name}}</td>
+							<td>{{score.count}}</td>
+						</tr>
+					</div>
+				{% endfor %}
+			{% endif %}
+		</table>
+
+		<br>
+		<br>
+
+		<form action="{{ url_for('index') }}" method="get">
+			<button type="submit">Home</button>
+		</form>
+	</div>
+	
+</body>
+
+<style>
+	.center_page {
+			margin: auto;
+			width: 50%;
+			border: 3px solid rgb(120, 176, 166);
+			background-color:#718aad;
+			padding: 10px;
+			text-align: center;
+		}
+
+	.middle {
+			margin-left: auto;
+			margin-right: auto;
+			border: 5px solid rgb(120, 176, 166);
+			width: 50%;
+			border-collapse: collapse;
+		}
+
+	body{
+			background-color:#324b6e;
+		}
+
+	button{
+			background-color: #2bd3d6;
+		}
+
+	td{
+		border: 2px solid rgb(120, 176, 166);
+	}
+</style>
+
+</html>
