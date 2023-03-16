@@ -1,0 +1,28 @@
+version: '3'
+services:
+  mongodb-container:
+    image: mongo
+    volumes:
+      - mongovolume:/data/db
+    networks:
+      - speed_click_network
+
+
+  app-flask:
+    build: ./flask_app
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./name.txt:/app/data/name.txt
+    networks:
+      - speed_click_network
+    container_name: flask_click
+    depends_on:
+      - mongodb-container
+
+volumes:
+  mongovolume:
+
+networks:
+  speed_click_network:
+    driver: bridge
